@@ -1,6 +1,6 @@
 require("dotenv").config();
 // const inquirer = require("inquirer");
-// require("./database/index");
+require("./database/models/things");
 
 const initializeServer = require("./server/index");
 
