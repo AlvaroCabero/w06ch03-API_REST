@@ -20,6 +20,7 @@ const initializeServer = (port) => {
 };
 
 app.use(morgan("dev"));
+app.use(express.json());
 
 app.use(notFoundErrorHandler);
 app.use(generalErrorHandler);
