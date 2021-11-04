@@ -1,7 +1,8 @@
 const chalk = require("chalk");
-const debug = require("debug")("pets:server");
+const debug = require("debug")("things:server");
 const express = require("express");
 const morgan = require("morgan");
+const { notFoundErrorHandler, generalErrorHandler } = require("./error");
 
 const app = express();
 
@@ -17,6 +18,10 @@ const initializeServer = (port) => {
     }
   });
 };
+
 app.use(morgan("dev"));
+
+app.use(notFoundErrorHandler);
+app.use(generalErrorHandler);
 
 module.exports = initializeServer;
