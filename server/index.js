@@ -24,7 +24,10 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use("/things", thingsRoutes);
-
+app.use((req, res, next) => {
+  debug("He llegado hasta aquí");
+  next();
+});
 app.use(notFoundErrorHandler);
 app.use(generalErrorHandler);
 
