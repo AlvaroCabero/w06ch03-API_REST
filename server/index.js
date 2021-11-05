@@ -3,6 +3,7 @@ const debug = require("debug")("things:server");
 const express = require("express");
 const morgan = require("morgan");
 const { notFoundErrorHandler, generalErrorHandler } = require("./error");
+const thingsRoutes = require("./routes/thingsRoutes");
 
 const app = express();
 
@@ -21,6 +22,8 @@ const initializeServer = (port) => {
 
 app.use(morgan("dev"));
 app.use(express.json());
+
+app.use("/things", thingsRoutes);
 
 app.use(notFoundErrorHandler);
 app.use(generalErrorHandler);
